@@ -7,3 +7,7 @@ class LanguageModel(AbstractModel):
 
     def __init__(self, data: dict):
         super().__init__(data)
+
+    def to_dict(self):
+        del self.data["_id"]
+        return self.data
