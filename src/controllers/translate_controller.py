@@ -1,4 +1,5 @@
 from models.language_model import LanguageModel
+from models.history_model import HistoryModel
 from flask import render_template, Blueprint, request
 from deep_translator import GoogleTranslator
 
@@ -23,6 +24,14 @@ def translate():
     text_to_translate = request.form.get("text-to-translate")
     translate_from = request.form.get("translate-from")
     translate_to = request.form.get("translate-to")
+    HistoryModel(
+        {
+            "text_to_translate": text_to_translate,
+            "translate_from": translate_from,
+            "translate_to": translate_to,
+        }
+    ).save()
+
     translated = GoogleTranslator(
         source=translate_from or "auto", target=translate_to
     ).translate(text_to_translate)
