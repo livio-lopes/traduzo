@@ -20,11 +20,11 @@ def index():
 
 @translate_controller.post("/")
 def translate():
-    text_to_translate = request.form.get('text-to-translate')
-    translate_from = request.form.get('translate-from')
-    translate_to = request.form.get('translate-to')
+    text_to_translate = request.form.get("text-to-translate")
+    translate_from = request.form.get("translate-from")
+    translate_to = request.form.get("translate-to")
     translated = GoogleTranslator(
-        source=translate_from or 'auto', target=translate_to
+        source=translate_from or "auto", target=translate_to
     ).translate(text_to_translate)
     data = {
         "languages": LanguageModel.list_dicts(),
@@ -34,4 +34,22 @@ def translate():
         "translated": translated,
     }
 
+    return render_template("index.html", **data)
+
+
+@translate_controller.post("/reverse")
+def reverse():
+    text_to_translate = request.form.get("text-to-translate")
+    translate_from = request.form.get("translate-from")
+    translate_to = request.form.get("translate-to")
+    translated = GoogleTranslator(
+        source=translate_from or "auto", target=translate_to
+    ).translate(text_to_translate)
+    data = {
+        "languages": LanguageModel.list_dicts(),
+        "text_to_translate": translated,
+        "translate_from": translate_to,
+        "translate_to": translate_from,
+        "translated": text_to_translate,
+    }
     return render_template("index.html", **data)
