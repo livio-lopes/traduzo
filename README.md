@@ -1,5 +1,5 @@
 ## O que é projeto Traduzo?
-Uma ferramenta de tradução de textos entre vários idiomas, utilizando Python com o Framework Flask, em arquitetura MVC (Model, View e Controller) para criar uma aplicação Server Side. Ou seja, o Back-end (pela controller) fornecerá diretamente a camada View, para a pessoa usuária.
+Uma ferramenta de tradução de textos entre vários idiomas, utilizando Python com o Framework Flask, explorando a arquitetura MVC (Model, View e Controller) para criar uma aplicação Server Side. Ou seja, o Back-end (pela controller) fornecerá diretamente a camada View, para a pessoa usuária.
 
 ## Quais desafios?
 1. Criar a conexão com o MongoDB
