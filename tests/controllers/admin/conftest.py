@@ -32,3 +32,4 @@ def prepare_base(app_test):
             "translate_to": "pt",
         },
     )
+
